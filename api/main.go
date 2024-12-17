@@ -2,13 +2,24 @@
 package main
 
 import (
+	"go-api/internal/database"
 	"go-api/internal/handlers"
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+
+	if err := godotenv.Load(); err != nil {
+        log.Fatal("Error loading .env file")
+    }
+
+    // Connect to database
+    database.ConnectDB()
+
+	
 	app := fiber.New()
 	handlers.SetupPostRoutes(app)
 	// app.Use(middleware.lo)
