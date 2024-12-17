@@ -1,0 +1,24 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+  # Build from root directory
+  cmd = "go build -o ./tmp/main ./api/main.go"
+  bin = "./tmp/main"
+  delay = 1000
+  exclude_dir = ["tmp"]
+  include_ext = ["go"]
+  full_bin = ""
+  poll = true
+
+[log]
+  time = true
+
+[color]
+  main = "magenta"
+  watcher = "cyan"
+  build = "yellow"
+  runner = "green"
+
+[screen]
+  clear_on_rebuild = true
