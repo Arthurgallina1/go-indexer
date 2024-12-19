@@ -216,6 +216,13 @@ func DeletePost(c *fiber.Ctx) error {
     id := c.Params("id")
     var post models.Post
 
+    if result := database.DB.First(&post, id); result.Error != nil {
+        return c.Status(404).JSON(fiber.Map{
+            "error": "Post not found",
+        })
+    }
+    
+
     result := database.DB.Delete(&post, id)
     if result.Error != nil {
         return c.Status(500).JSON(fiber.Map{

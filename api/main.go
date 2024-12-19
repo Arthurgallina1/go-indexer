@@ -2,26 +2,22 @@
 package main
 
 import (
-	"go-api/internal/database"
-	"go-api/internal/handlers"
-	"log"
-
-	"github.com/gofiber/fiber/v2"
-	"github.com/joho/godotenv"
+	"go-api/internal/web3"
 )
 
 func main() {
 
-	if err := godotenv.Load(); err != nil {
-        log.Fatal("Error loading .env file")
-    }
+	web3.Connect()
+	// if err := godotenv.Load(); err != nil {
+    //     log.Fatal("Error loading .env file")
+    // }
 
-    // Connect to database
-    database.ConnectDB()
+    // // Connect to database
+    // database.ConnectDB()
 
 	
-	app := fiber.New()
-	handlers.SetupPostRoutes(app)
-	// app.Use(middleware.lo)
-	log.Fatal(app.Listen(":3000")) //App listen starts the server, log.Fatal logs the error if any
+	// app := fiber.New()
+	// handlers.SetupPostRoutes(app)
+	// // app.Use(middleware.lo)
+	// log.Fatal(app.Listen(":3000")) //App listen starts the server, log.Fatal logs the error if any
 }
